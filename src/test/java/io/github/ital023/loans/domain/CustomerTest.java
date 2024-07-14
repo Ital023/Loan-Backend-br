@@ -62,6 +62,65 @@ class CustomerTest {
             assertFalse(customer.isIncomeEqualOrHigherThan(8000.00));
         }
 
+        @Nested
+        class IsIncomeBetween {
+
+            @Test
+            void shouldBeTrueWhenIncomeIsBetween() {
+                Customer customer = CustomerFactory.build(5000.00);
+
+                assertTrue(customer.isIncomeBetween(3000.00, 8000.00));
+            }
+
+            @Test
+            void shouldBeTrueWhenIncomeIsEqualToMin() {
+                Customer customer = CustomerFactory.build(5000.00);
+
+                assertTrue(customer.isIncomeBetween(5000.00, 8000.00));
+            }
+
+            @Test
+            void shouldBeTrueWhenIncomeIsEqualToMax() {
+                Customer customer = CustomerFactory.build(8000.00);
+
+                assertTrue(customer.isIncomeBetween(3000.00, 8000.00));
+            }
+
+            @Test
+            void shouldBeFalseWhenIncomeNotBetween() {
+                Customer customer = CustomerFactory.build(5000.00);
+
+                assertFalse(customer.isIncomeBetween(3000.0, 4500.0));
+            }
+        }
+
+        @Nested
+        class IsAgeLowerThan {
+
+            @Test
+            void shouldBeTrueWhenAgeIsLowerThan() {
+                Customer customer = CustomerFactory.build(25);
+
+                assertTrue(customer.isAgeLowerThan(30));
+            }
+
+            @Test
+            void shouldBeFalseWhenAgeIsNotLowerThan() {
+                Customer customer = CustomerFactory.build(25);
+
+                assertFalse(customer.isAgeLowerThan(22));
+            }
+
+            @Test
+            void shouldBeFalseWhenAgeIsEqual() {
+                Customer customer = CustomerFactory.build(25);
+
+                assertFalse(customer.isAgeLowerThan(25));
+            }
+
+
+        }
+
 
     }
 

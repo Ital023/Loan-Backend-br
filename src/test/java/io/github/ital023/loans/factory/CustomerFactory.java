@@ -12,4 +12,8 @@ public class CustomerFactory {
         return new Customer(25,"123.456.789-00","Name", income,"SP");
     }
 
+    public static Customer build(int age) {
+        return new Customer(age,"123.456.789-00","Name", 5000.00,"SP");
+    }
+
 }
