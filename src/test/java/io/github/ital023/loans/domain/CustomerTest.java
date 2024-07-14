@@ -38,4 +38,31 @@ class CustomerTest {
 
     }
 
+    @Nested
+    class IsIncomeEqualOrGreaterThan {
+
+        @Test
+        void shouldBeTrueWhenIncomeIsEqual(){
+            Customer customer = CustomerFactory.build(5000.00);
+
+            assertTrue(customer.isIncomeEqualOrHigherThan(5000.00));
+        }
+
+        @Test
+        void shouldBeTrueWhenIncomeIsGreaterThan(){
+            Customer customer = CustomerFactory.build(10000.00);
+
+            assertTrue(customer.isIncomeEqualOrHigherThan(9000.00));
+        }
+
+        @Test
+        void shouldBeFalseWhenIncomeIsGreaterThan(){
+            Customer customer = CustomerFactory.build(5000.00);
+
+            assertFalse(customer.isIncomeEqualOrHigherThan(8000.00));
+        }
+
+
+    }
+
 }
