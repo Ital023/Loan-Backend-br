@@ -17,7 +17,9 @@ public class LoanController {
 
     @PostMapping("/customer-loans")
     public ResponseEntity<LoanResponseDTO> customerLoans(@RequestBody LoanRequestDTO loanRequestDTO){
-        return null;
+        LoanResponseDTO loanResponseDTO = loanService.loanAvaibles(loanRequestDTO);
+
+        return ResponseEntity.ok(loanResponseDTO);
     }
 
 }
