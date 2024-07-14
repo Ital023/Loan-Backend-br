@@ -88,4 +88,24 @@ class LoanTest {
 
     }
 
+    @Nested
+    class getPersonalLoanInterestRate{
+        @Test
+        void shouldTheInterestRateBe4(){
+
+            doReturn(true).when(customer).IsIncomeEqualOrLowerThan(3000.0);
+
+            assertEquals(4.0,loan.getPersonalLoanInterestedRate());
+        }
+
+        @Test
+        void shouldThrowExceptionWhenIsNotAvailable(){
+
+            doReturn(false).when(customer).IsIncomeEqualOrLowerThan(3000.0);
+
+            assertThrows(LoanNotAvailableException.class, () -> loan.getPersonalLoanInterestedRate());
+        }
+
+    }
+
 }
