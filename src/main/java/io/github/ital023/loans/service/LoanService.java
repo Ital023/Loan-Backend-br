@@ -23,8 +23,11 @@ public class LoanService {
         if(loan.isPersonalLoanAvailable()){
             loans.add(new LoanDTO(LoanType.PERSONAL,loan.getPersonalLoanInterestedRate()));
         }
-        if(loan.isGuaranteedAvailable()){
+        if(loan.isGuaranteedLoanAvailable()){
             loans.add(new LoanDTO(LoanType.GUARANTEED, loan.getGuaranteedLoanInterestedRate()));
+        }
+        if(loan.isConsigmentLoanAvailable()){
+            loans.add(new LoanDTO(LoanType.CONSIGNMENT, loan.getConsigmentLoanInterestedRate()));
         }
 
         return new LoanResponseDTO(loanRequestDTO.name(), loans);

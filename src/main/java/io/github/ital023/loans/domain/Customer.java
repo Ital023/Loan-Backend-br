@@ -37,7 +37,4 @@ public class Customer {
         return value <= income;
     }
 
-
-
-
 }
