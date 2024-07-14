@@ -3,6 +3,7 @@ package io.github.ital023.loans.controller;
 import io.github.ital023.loans.controller.dto.LoanRequestDTO;
 import io.github.ital023.loans.controller.dto.LoanResponseDTO;
 import io.github.ital023.loans.service.LoanService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class LoanController {
     private LoanService loanService;
 
     @PostMapping("/customer-loans")
-    public ResponseEntity<LoanResponseDTO> customerLoans(@RequestBody LoanRequestDTO loanRequestDTO){
+    public ResponseEntity<LoanResponseDTO> customerLoans(@RequestBody @Valid LoanRequestDTO loanRequestDTO){
         LoanResponseDTO loanResponseDTO = loanService.loanAvaibles(loanRequestDTO);
 
         return ResponseEntity.ok(loanResponseDTO);
