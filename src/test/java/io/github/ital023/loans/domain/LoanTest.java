@@ -128,4 +128,24 @@ class LoanTest {
 
     }
 
+    @Nested
+    class getConsigmentLoanInterestRate{
+        @Test
+        void shouldTheInterestRateBe2(){
+
+            doReturn(true).when(customer).isIncomeEqualOrHigherThan(5000.0);
+
+            assertEquals(2.0,loan.getConsigmentLoanInterestedRate());
+        }
+
+        @Test
+        void shouldThrowExceptionWhenIsNotAvailable(){
+
+            doReturn(false).when(customer).isIncomeEqualOrHigherThan(5000.0);
+
+            assertThrows(LoanNotAvailableException.class, () -> loan.getConsigmentLoanInterestedRate());
+        }
+
+    }
+
 }
