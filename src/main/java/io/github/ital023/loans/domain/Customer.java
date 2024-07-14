@@ -33,4 +33,11 @@ public class Customer {
         return location.equalsIgnoreCase(value);
     }
 
+    public boolean isIncomeEqualOrHigherThan(double value){
+        return value <= income;
+    }
+
+
+
+
 }

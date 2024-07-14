@@ -23,6 +23,9 @@ public class LoanService {
         if(loan.isPersonalLoanAvailable()){
             loans.add(new LoanDTO(LoanType.PERSONAL,loan.getPersonalLoanInterestedRate()));
         }
+        if(loan.isGuaranteedAvailable()){
+            loans.add(new LoanDTO(LoanType.GUARANTEED, loan.getGuaranteedLoanInterestedRate()));
+        }
 
         return new LoanResponseDTO(loanRequestDTO.name(), loans);
     }

@@ -19,6 +19,10 @@ public class Loan {
 
     }
 
+    public boolean isGuaranteedAvailable(){
+        return customer.isIncomeEqualOrHigherThan(5000.0);
+    }
+
     public double getPersonalLoanInterestedRate(){
         if(isPersonalLoanAvailable()){
             return 4.0;
@@ -26,6 +30,14 @@ public class Loan {
 
         throw new LoanNotAvailableException();
 
+    }
+
+    public double getGuaranteedLoanInterestedRate(){
+        if(isGuaranteedAvailable()){
+            return 3.0;
+        }
+
+        throw new LoanNotAvailableException();
     }
 
 }
